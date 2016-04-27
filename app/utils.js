@@ -5,12 +5,14 @@ var bunyan = require('bunyan'),
 
 // logging
 var prettyStdOut = new PrettyStream({mode: 'short'});
+prettyStdOut.pipe(process.stdout);
+
 var streams = [{
   level: process.env.DEFAULT_LOG_LEVEL || 'info',
   type: 'raw',
   stream: prettyStdOut
 }];
-prettyStdOut.pipe(process.stdout);
+
 if (process.env.ENABLE_SLACK) {
   streams.push({
     level: 'error',
@@ -21,6 +23,7 @@ if (process.env.ENABLE_SLACK) {
     })
   });
 }
+
 var log = bunyan.createLogger({
   name: 'elmer-utils',
   streams: streams
@@ -45,12 +48,14 @@ utils.getLogger = function(options) {
   }
 
   var prettyStdOut = new PrettyStream({mode: 'short'});
+  prettyStdOut.pipe(process.stdout);
+
   var streams = [{
     level: logLevel,
     type: 'raw',
     stream: prettyStdOut
   }];
-  prettyStdOut.pipe(process.stdout);
+
   if (process.env.ENABLE_SLACK) {
     streams.push({
       level: 'error',
@@ -61,6 +66,7 @@ utils.getLogger = function(options) {
       })
     });
   }
+
   return bunyan.createLogger({
     name: 'elmer-' + logName,
     streams: streams
