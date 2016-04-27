@@ -10,7 +10,7 @@ cat .env-example > .env
 vim .env  # Add in your real credentials here
 source .env
 npm install --no-optional
-node watcher.js
+npm start
 ```
 
 Why `--no-optional`?  [Here's why](https://github.com/trentm/node-bunyan/issues/216).
