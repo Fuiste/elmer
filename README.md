@@ -5,7 +5,7 @@ interface?  I don't know yet, maybe I'll figure that out as I go.
 
 ## Continuous Usage
 
-```
+```bash
 cat .env-example > .env
 vim .env                  # Add in your real credentials here
 source .env
