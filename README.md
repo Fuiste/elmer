@@ -1,7 +1,7 @@
-## RabbitMQ Watchdog App
+## Elmer, a node.js RabbitMQ watchdog app
 
-Watcher for a RabbitMQ instance with Slack logging capability.  Used by Ionic to track push notification activity and
-warn of excessive backlog or unacked messages.
+Elmer watches over a RabbitMQ instance and has Slack logging capability.  Used by Ionic to track push notification
+activity and warn of excessive backlog or unacked messages.
 
 ## Continuous Usage
 
@@ -9,6 +9,8 @@ warn of excessive backlog or unacked messages.
 npm install --no-optional
 node watcher.js
 ```
+
+Why `--no-optional`?  [Here's why](https://github.com/trentm/node-bunyan/issues/216).
 
 ## Running one-off checks
 
