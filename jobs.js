@@ -9,9 +9,9 @@ var request = require('superagent'),
 var utils = require('./utils');
 
 // Rabbit credentials
-var rabbitURL = process.env.PUSH_RABBIT_URL;
-var rabbitUser = process.env.PUSH_RABBIT_USER;
-var rabbitPass = process.env.PUSH_RABBIT_PASS;
+var rabbitURL = process.env.RABBIT_URL;
+var rabbitUser = process.env.RABBIT_USER;
+var rabbitPass = process.env.RABBIT_PASS;
 
 // Logging
 var log = utils.getLogger({'name': 'watcher'});
