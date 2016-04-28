@@ -15,7 +15,7 @@ Elmer.run = function(processArgv) {
   var cmd = args['_'];
 
   if(cmd.length != 1) {
-    log.warn("Invalid # of args")
+    log.warn("Invalid # of args");
     process.exit();
   } else {
     switch(cmd[0]) {
@@ -25,7 +25,9 @@ Elmer.run = function(processArgv) {
       case 'run':
         watcher.runAllTasks().then(function(res) {
           log.info(res);
-        })
+        }, function(err) {
+          log.warn("Error:", err);
+        });
         break;
       default:
         log.warn("Invalid arg");
