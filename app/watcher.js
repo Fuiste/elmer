@@ -9,8 +9,25 @@ var jobs = require('./jobs'),
 // Logging
 var log = utils.getLogger({'name': 'watcher'});
 
-Q.all(config.WatcherTasks).then(function(results) {
-  log.info(results);
-}, function(err) {
-  log.warn(err);
-})
+// Module
+var watcher = module.exports;
+
+watcher.runAllTasks = function() {
+  var deferred  = Q.defer();
+
+  Q.all(config.WatcherTasks).then(function(results) {
+    deferred.resolve(results);
+  }, function(err) {
+    deferred.reject(err);
+  })
+
+  return deferred.promise;
+};
+
+watcher.watch = function(interval) {
+  watcher.runAllTasks().then(function(results) {
+    log.info("Watch got", results);
+  }, function(err) {
+    log.warn(err);
+  });
+}

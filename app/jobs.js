@@ -14,7 +14,7 @@ var rabbitUser = process.env.RABBIT_USER;
 var rabbitPass = process.env.RABBIT_PASS;
 
 // Logging
-var log = utils.getLogger({'name': 'watcher'});
+var log = utils.getLogger({'name': 'jobs'});
 
 // Utility module
 var jobs = module.exports;
